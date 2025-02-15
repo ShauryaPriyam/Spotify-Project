@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState, useContext,useRef } from "react";
+import React, { createContext, useEffect, useState, useContext, useRef } from "react";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -21,7 +21,7 @@ export const Songprovider = ({ children }) => {
 
   const fetchAlbum = async () => {
     try {
-      const { data } = await axios.get("http://localhost:3000/spotify/Album/all")
+      const { data } = await axios.get("https://spotify-project-tujq.onrender.com/spotify/Album/all")
       setAlbums(data.albums)
     } catch (err) {
       // toast.error('An error occurred');
@@ -31,7 +31,7 @@ export const Songprovider = ({ children }) => {
 
   const fetchAllSongs = async () => {
     try {
-      const { data } = await axios.get("http://localhost:3000/spotify/Song/all")
+      const { data } = await axios.get("https://spotify-project-tujq.onrender.com/spotify/Song/all")
       setSong(data.songs)
       // console.log(data.songs)
       setSelectedSong(data.songs[0]._id);
@@ -48,7 +48,7 @@ export const Songprovider = ({ children }) => {
     formData.append("description", description)
     formData.append("file", file);
     try {
-      const { data } = await axios.post("http://localhost:3000/spotify/Album/create", formData)
+      const { data } = await axios.post("https://spotify-project-tujq.onrender.com/spotify/Album/create", formData)
       if (!data.success) {
         toast.error(data.message)
       }
@@ -75,7 +75,7 @@ export const Songprovider = ({ children }) => {
     // console.log([...formData])
 
     try {
-      const { data } = await axios.post("http://localhost:3000/spotify/Song/add", formData)
+      const { data } = await axios.post("https://spotify-project-tujq.onrender.com/spotify/Song/add", formData)
       //  console.log(data)
       if (!data.success) {
         toast.error(data.message)
@@ -97,7 +97,7 @@ export const Songprovider = ({ children }) => {
     const formData = new FormData();
     formData.append("file", file);
     try {
-      const { data } = await axios.post("http://localhost:3000/spotify/Thumbnail/" + id, formData)
+      const { data } = await axios.post("https://spotify-project-tujq.onrender.com/spotify/Thumbnail/" + id, formData)
       if (!data.success) {
         toast.error(data.message)
       }
@@ -116,7 +116,7 @@ export const Songprovider = ({ children }) => {
 
   const deleteSong = async (id) => {
     try {
-      const { data } = await axios.delete("http://localhost:3000/spotify/Song/delete/" + id);
+      const { data } = await axios.delete("https://spotify-project-tujq.onrender.com/spotify/Song/delete/" + id);
 
       toast.success(data.message);
       fetchAllSongs()
@@ -129,7 +129,7 @@ export const Songprovider = ({ children }) => {
     try {
       // console.log("song:", selectedSong)
       if (selectedSong !== "") {
-        const { data } = await axios.get("http://localhost:3000/spotify/Song/single/" + selectedSong)
+        const { data } = await axios.get("https://spotify-project-tujq.onrender.com/spotify/Song/single/" + selectedSong)
         // console.log(data)
         setSingleSong(data.song)
       }
@@ -140,7 +140,7 @@ export const Songprovider = ({ children }) => {
 
   const nextMusic = () => {
     let currentIndex = songs.findIndex((song) => song._id === selectedSong);
-  
+
     if (currentIndex === songs.length - 1) {
       setIndex(0);
       setSelectedSong(songs[0]._id);
@@ -153,21 +153,21 @@ export const Songprovider = ({ children }) => {
 
   const prevMusic = () => {
     let currentIndex = songs.findIndex((song) => song._id === selectedSong);
-  
+
     if (currentIndex > 0) {
       setIndex(currentIndex - 1);
       setSelectedSong(songs[currentIndex - 1]._id);
       setIsPlaying(true);
     }
   };
-  
+
 
   const [albumSong, setAlbumSong] = useState([]);
   const [albumData, setAlbumData] = useState([]);
 
   const fetchSongbyAlbum = async (id) => {
     try {
-      const { data } = await axios.get("http://localhost:3000/spotify/Album/" + id)
+      const { data } = await axios.get("https://spotify-project-tujq.onrender.com/spotify/Album/" + id)
       setAlbumData(data.album)
       setAlbumSong(data.songs)
     } catch (err) {

@@ -14,7 +14,7 @@ export const UserProvider = ({ children }) => {
     setLoading(true)
     try {
       console.log(email, password)
-      const { data } = await axios.post("http://localhost:3000/user/login", {
+      const { data } = await axios.post("https://spotify-project-tujq.onrender.com/user/login", {
         email,
         password
       })
@@ -44,7 +44,7 @@ export const UserProvider = ({ children }) => {
 
   const registerUser = async (username, email, password, navigate) => {
     try {
-      const { data } = await axios.post("http://localhost:3000/user/register", {
+      const { data } = await axios.post("https://spotify-project-tujq.onrender.com/user/register", {
         username,
         email,
         password
@@ -56,7 +56,7 @@ export const UserProvider = ({ children }) => {
         toast.success(data.message)
         fetchUser();
         setUser(data.username)
-          navigate("/")
+        navigate("/")
         // console.log(user)
       }
     } catch (err) {
@@ -72,7 +72,7 @@ export const UserProvider = ({ children }) => {
 
   const logoutUser = async () => {
     try {
-      const { data } = await axios.post("http://localhost:3000/user/logout")
+      const { data } = await axios.post("https://spotify-project-tujq.onrender.com/user/logout")
       if (data.success) {
         toast.success(data.message)
         setUser(null);
@@ -86,7 +86,7 @@ export const UserProvider = ({ children }) => {
   const saveToPlaylist = async (id) => {
     try {
       console.log("id:", id)
-      const { data } = await axios.post("http://localhost:3000/user/song/" + id)
+      const { data } = await axios.post("https://spotify-project-tujq.onrender.com/user/song/" + id)
       console.log("data", data)
       toast.success(data.message);
       fetchUser();
@@ -98,7 +98,7 @@ export const UserProvider = ({ children }) => {
 
   const fetchUser = async () => {
     try {
-      const { data } = await axios.get("http://localhost:3000/user/profile");
+      const { data } = await axios.get("https://spotify-project-tujq.onrender.com/user/profile");
       // console.log(data)
       setUser(data.user)
       setIsAuth(true);

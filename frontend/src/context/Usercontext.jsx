@@ -35,6 +35,7 @@ export const UserProvider = ({ children }) => {
       if (err.response) {
         console.error("Login error response:", err.response.data);
         toast.error(err.response.data.message || "Invalid email or password");
+        setLoading(false)
       } else {
         console.error("Login error:", err.message);
         toast.error("An error occurred");
@@ -56,6 +57,7 @@ export const UserProvider = ({ children }) => {
         toast.success(data.message)
         fetchUser();
         setUser(data.username)
+        setLoading(false)
         navigate("/")
         // console.log(user)
       }
@@ -63,6 +65,7 @@ export const UserProvider = ({ children }) => {
       if (err.response) {
         console.error("Login error response:", err.response.data);
         toast.error(err.response.data.message || "Invalid email or password");
+        setLoading(false)
       } else {
         console.error("Login error:", err.message);
         toast.error("An error occurred");

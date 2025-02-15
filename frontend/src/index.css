@@ -1,0 +1,179 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+@import "tailwindcss";
+
+
+* {
+  box-sizing: border-box;
+}
+
+
+body {
+  background-color: black;
+  color: #fff;
+  font-family: "Poppins", 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.header {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.h1 {
+  font-size: 40px;
+  word-spacing: -2px;
+}
+
+.form {
+  width: 350px;
+}
+
+.label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.input {
+  position: relative;
+  padding: 14px 15px;
+  text-align: left;
+  background-color: black;
+  outline: none;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #7C7C7C;
+  color: white;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.input:hover{
+  border: 2px solid white;
+}
+
+.btn {
+  width: 100%;
+  padding: 17px 15px;
+  /* background-color: #3BE477; */
+  background-color: #1ED760;
+  outline: none;
+  font-size: 16px;
+  margin-bottom: 16px;
+  border-radius: 50px;
+  font-weight: bolder;
+  border: none;
+  margin-top: 16px;
+}
+
+.btn:hover{
+  transform: scale(1.05);
+  background-color: #3BE477;
+}
+
+.hr{
+  position: relative;
+  width: 350px;
+}
+
+.h3{
+  color: #B3B3B3;
+  font-weight: 500;
+  margin-top: 32px;
+}
+
+.Link{
+  color: #fff;
+  margin-left: 10px;
+}
+
+.Link:hover{
+  color: #1ED760;
+}
+
+.login-footer{
+  width: 400px;
+  text-align: center;
+  margin-top: 32px;
+}
+
+@media (max-width:400px) {
+  .form{
+    width: 325px;
+  }
+  .login-footer{
+    width: 325px;
+  }
+}
+
+.spin-box{
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ height: 100vh;
+ min-height: 100vh;
+ background-color: black;
+}
+
+.spin{
+  display:inline-block;
+  height: 40px;
+  width: 40px;
+  border: 4px solid #3BE477;
+  border-top: 4px solid transparent;
+  border-radius: 50%;  
+  animation: spin 1s linear infinite;
+  background-clip: content-box;
+  font-size: 1%;
+}
+
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.scrollbar-hidden {
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+*::-webkit-scrollbar {
+  height: 0.5rem;
+  width: 0.1rem;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #2e2d2b;
+}
+
+@media (max-width: 1175px) {
+  .btn-shrink {
+    font-size: 6px; /* Adjust as needed */
+  }
+}
+
+
+
+
